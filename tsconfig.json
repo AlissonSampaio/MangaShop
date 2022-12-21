@@ -8,7 +8,11 @@
     "forceConsistentCasingInFileNames": true,
     "allowJs": true
   },
-  "include": ["src/**/*.ts", "src/models/user.prisma", "prisma/script.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/models/user.prisma",
+    "src/external/prisma/script.ts"
+  ],
   "rootDir": "./src",
   "outDir": "./dist"
 }
