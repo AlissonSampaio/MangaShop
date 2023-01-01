@@ -5,7 +5,7 @@ import { UserService } from "../services/userService";
 export class UserController {
   service = new UserService();
 
-  async createUser(request: Request, response: Response) {
+  createUser = async (request: Request, response: Response) => {
     const { name, email, password } = request.body;
 
     if (!(name && email && password)) {
@@ -23,9 +23,9 @@ export class UserController {
     }
 
     return response.status(200).json(result);
-  }
+  };
 
-  async getAllUsers(request: Request, response: Response) {
+  getAllUsers = async (request: Request, response: Response) => {
     const users = await this.service.getAllUsers();
 
     if (!users || users instanceof Error) {
@@ -33,9 +33,9 @@ export class UserController {
     }
 
     return response.json(users);
-  }
+  };
 
-  async getUserById(request: Request, response: Response) {
+  getUserById = async (request: Request, response: Response) => {
     const { id } = request.params;
 
     const user = this.service.getUserById(id);
@@ -43,9 +43,9 @@ export class UserController {
     if (!user) {
       return response.status(400).json("User does not exist!");
     }
-  }
+  };
 
-  async updateUser(request: Request, response: Response) {
+  updateUser = async (request: Request, response: Response) => {
     const { id } = request.params;
     const { name, email, password } = request.body;
 
@@ -54,7 +54,7 @@ export class UserController {
     }
 
     const result = this.service.updateUser({
-      id,
+      id: parseInt(id),
       name,
       email,
       password,
@@ -65,9 +65,9 @@ export class UserController {
     }
 
     return response.status(200).json("User updated with success!");
-  }
+  };
 
-  async deleteUser(request: Request, response: Response) {
+  deleteUser = async (request: Request, response: Response) => {
     const { id } = request.params;
 
     const result = this.service.deleteUser(id);
@@ -77,5 +77,5 @@ export class UserController {
     }
 
     return response.status(200).json("User deleted with success!");
-  }
+  };
 }
