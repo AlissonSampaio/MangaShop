@@ -1,6 +1,5 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -21,31 +20,21 @@ model User {
 }
 
 model Manga {
-  id        Int               @id @default(autoincrement())
-  titulo    String
-  author    String
-  comments  Comment[]
-  category  MangaOnCategory[]
-  createdAt DateTime          @default(now())
-  updatedAt DateTime          @default(now())
+  id         Int        @id @default(autoincrement())
+  title      String
+  author     String
+  comments   Comment[]
+  categories Category[]
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @default(now())
 }
 
 model Category {
-  id        Int               @id @default(autoincrement())
-  manga     MangaOnCategory[]
-  createdAt DateTime          @default(now())
-  updatedAt DateTime          @default(now())
-}
-
-model MangaOnCategory {
-  manga      Manga    @relation(fields: [mangaId], references: [id])
-  mangaId    Int
-  category   Category @relation(fields: [categoryId], references: [id])
-  categoryId Int
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @default(now())
-
-  @@id([mangaId, categoryId])
+  id        Int      @id @default(autoincrement())
+  name      String
+  mangas    Manga[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
 }
 
 model Comment {

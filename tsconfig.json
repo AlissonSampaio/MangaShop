@@ -11,7 +11,7 @@
   "include": [
     "src/**/*.ts",
     "src/models/user.prisma",
-    "src/external/prisma/script.ts"
+    "src/external/repositories/prisma/script.ts"
   ],
   "rootDir": "./src",
   "outDir": "./dist"

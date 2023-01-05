@@ -85,10 +85,12 @@ export class UserService implements IUserMethods {
 
     let updatedUser;
 
+    const encryptedPassword = await bcrypt.hash(password, 10);
+
     try {
       updatedUser = await this.prisma.user.update({
         where: { id },
-        data: { name, email, password },
+        data: { name, email, password: encryptedPassword },
       });
     } catch (err) {
       throw new Error(err);
@@ -111,7 +113,7 @@ export class UserService implements IUserMethods {
     }
 
     if (existentUser) {
-      return new Error("Usuário");
+      return new Error("User deleted with success!");
     }
 
     let deletedUser;

@@ -1,7 +1,3 @@
-import { type } from "os";
-import { Interface } from "readline";
-import { v4 as uuid } from "uuid";
-
 export type User = {
   id?: number;
   name: string;

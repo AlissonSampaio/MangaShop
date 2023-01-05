@@ -43,6 +43,8 @@ export class UserController {
     if (!user) {
       return response.status(400).json("User does not exist!");
     }
+
+    return response.status(200).json(user);
   };
 
   updateUser = async (request: Request, response: Response) => {
